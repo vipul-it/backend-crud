@@ -3,16 +3,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors'); // Import the cors package
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Connect to MongoDB 
+// Connect to MongoDB   
 mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+
 });
 
 // Create a product schema
@@ -26,6 +26,9 @@ const productSchema = new mongoose.Schema({
 
 // Create a product model
 const Product = mongoose.model('Product', productSchema);
+
+// Middleware for CORS
+app.use(cors());
 
 // Middleware for parsing JSON
 app.use(express.json());
