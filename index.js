@@ -3,14 +3,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const cors = require('cors'); // Import the cors package
+const cors = require('cors'); 
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
-
-// Connect to MongoDB   
+ 
 // Connect to MongoDB
 async function connectToDatabase() {
   try {
